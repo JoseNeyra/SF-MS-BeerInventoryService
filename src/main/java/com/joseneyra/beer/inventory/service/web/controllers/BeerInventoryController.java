@@ -1,7 +1,7 @@
 package com.joseneyra.beer.inventory.service.web.controllers;
 
 import com.joseneyra.beer.inventory.service.repositories.BeerInventoryRepository;
-import com.joseneyra.beer.inventory.service.web.model.BeerInventoryDto;
+import com.joseneyra.brewery.model.BeerInventoryDto;
 import com.joseneyra.beer.inventory.service.web.mappers.BeerInventoryMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

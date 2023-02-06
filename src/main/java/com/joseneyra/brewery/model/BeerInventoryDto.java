@@ -1,4 +1,4 @@
-package com.joseneyra.beer.inventory.service.web.model;
+package com.joseneyra.brewery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

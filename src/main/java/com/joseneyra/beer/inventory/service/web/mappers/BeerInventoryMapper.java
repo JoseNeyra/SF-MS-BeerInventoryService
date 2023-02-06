@@ -1,6 +1,6 @@
 package com.joseneyra.beer.inventory.service.web.mappers;
 
-import com.joseneyra.beer.inventory.service.web.model.BeerInventoryDto;
+import com.joseneyra.brewery.model.BeerInventoryDto;
 import com.joseneyra.beer.inventory.service.domain.BeerInventory;
 import org.mapstruct.Mapper;
 
