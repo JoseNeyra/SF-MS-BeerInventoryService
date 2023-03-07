@@ -17,6 +17,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AllocationServiceImpl implements AllocationService{
 
     private final BeerInventoryRepository beerInventoryRepository;
+
+
+    @Override
+    public void deAllocateOrder(BeerOrderDto beerOrderDto) {
+        log.debug("De-Allocating OrderId: " + beerOrderDto.getId());
+
+        beerOrderDto.getBeerOrderLines().forEach(beerOrderLineDto -> {
+            BeerInventory beerInventory = BeerInventory.builder()
+                    .beerId(beerOrderLineDto.getBeerId())
+                    .upc(beerOrderLineDto.getUpc())
+                    .quantityOnHand(beerOrderLineDto.getQuantityAllocated())
+                    .build();
+
+            BeerInventory savedInventory = beerInventoryRepository.save(beerInventory);
+
+            log.debug("Saved Inventory for beer upc: " + savedInventory.getUpc() + " inventory id: " + savedInventory.getId());
+        });
+    }
+
     @Override
     public Boolean allocateOrder(BeerOrderDto beerOrderDto) {
         log.debug("Allocating OrderId: " + beerOrderDto.getId());
