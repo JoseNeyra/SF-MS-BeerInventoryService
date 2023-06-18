@@ -24,11 +24,8 @@ public class AllocationListener {
         try {
             Boolean allocationResult = allocationService.allocateOrder(request.getBeerOrderDto());
 
-            if (allocationResult) {
-                builder.pendingInventory(false);
-            } else {
-                builder.pendingInventory(true);
-            }
+            builder.pendingInventory(!allocationResult);
+            builder.allocationError(false);
         } catch (Exception e){
             log.error("Allocation failed for Order Id: " + request.getBeerOrderDto().getId());
             builder.allocationError(true);

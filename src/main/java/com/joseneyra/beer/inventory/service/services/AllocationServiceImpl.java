@@ -18,7 +18,6 @@ public class AllocationServiceImpl implements AllocationService{
 
     private final BeerInventoryRepository beerInventoryRepository;
 
-
     @Override
     public void deAllocateOrder(BeerOrderDto beerOrderDto) {
         log.debug("De-Allocating OrderId: " + beerOrderDto.getId());
@@ -76,7 +75,9 @@ public class AllocationServiceImpl implements AllocationService{
             } else if (inventory > 0) {             // Partial Allocation
                 beerOrderLineDto.setQuantityAllocated(allocatedQty + inventory);
                 beerInventory.setQuantityOnHand(0);
+            }
 
+            if (beerInventory.getQuantityOnHand() == null || beerInventory.getQuantityOnHand() == 0) {
                 beerInventoryRepository.delete(beerInventory);
             }
         });
