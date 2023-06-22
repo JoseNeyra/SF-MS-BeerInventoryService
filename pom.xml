@@ -14,6 +14,11 @@
     <name>mssc-beer-inventory-service</name>
     <description>MSSC Beer Inventory Service</description>
 
+    <properties>
+        <spring-cloud-starter-zipkin.version>2.2.8.RELEASE</spring-cloud-starter-zipkin.version>
+        <logstash-logback-encoder.version>7.3</logstash-logback-encoder.version>
+    </properties>
+
     <dependencies>
         <!-- Eureka Service -->
         <dependency>
@@ -26,6 +31,18 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <!-- Distributed tracing -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <version>${spring-cloud-starter-zipkin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback-encoder.version}</version>
         </dependency>
     </dependencies>
 
